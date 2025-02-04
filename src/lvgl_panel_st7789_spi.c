@@ -44,7 +44,8 @@ lv_display_t *lvgl_lcd_init(uint32_t hor_res, uint32_t ver_res)
         .sclk_io_num = ST7789_SPI_BUS_SCLK_IO_NUM,
         .quadwp_io_num = ST7789_SPI_BUS_QUADWP_IO_NUM,
         .quadhd_io_num = ST7789_SPI_BUS_QUADHD_IO_NUM,
-        .max_transfer_sz = ST7789_SPI_BUS_MAX_TRANSFER_SZ,
+        // .max_transfer_sz = ST7789_SPI_BUS_MAX_TRANSFER_SZ,
+        .max_transfer_sz = DISPLAY_WIDTH * DISPLAY_HEIGHT * sizeof(lv_color_t), // trying to fix the issue
         .flags = ST7789_SPI_BUS_FLAGS,
         .intr_flags = ST7789_SPI_BUS_INTR_FLAGS};
     log_d("spi_bus_config: mosi_io_num:%d, miso_io_num:%d, sclk_io_num:%d, quadwp_io_num:%d, quadhd_io_num:%d, max_transfer_sz:%d, flags:0x%08x, intr_flags:0x%04x", spi_bus_config.mosi_io_num, spi_bus_config.miso_io_num, spi_bus_config.sclk_io_num, spi_bus_config.quadwp_io_num, spi_bus_config.quadhd_io_num, spi_bus_config.max_transfer_sz, spi_bus_config.flags, spi_bus_config.intr_flags);
